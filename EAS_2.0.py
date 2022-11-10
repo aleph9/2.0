@@ -60,15 +60,15 @@ while True:
                 krw = get_balance("KRW")
                 if krw > 6000:                                        #잔고가 6000원 이상 확인 후 
                     upbit.buy_market_order("KRW-ETH", krw*0.9995)     #시장가로 매수 
-            elif cur > (abp("KRW-ETH")*0.008)+abp("KRW-ETH"):         #현재가가 매수평균가의 0.8% 수익 중이면 
+            elif cur >= (abp("KRW-ETH")*0.008)+abp("KRW-ETH"):        #현재가가 매수평균가의 0.8% 수익 중이면 
                         eth = get_balance("ETH")                      
                         if eth > 0.001:                               #이더리움 잔고 조회 후 
                             upbit.sell_market_order("KRW-ETH", eth*1) #시장가로 전량 매도
-            elif cur < (abp("KRW-ETH")*-0.0025)+abp("KRW-ETH"):        #현재가가 매수평균가의 -0.25% 손해 중이면 
+            elif cur <= (abp("KRW-ETH")*-0.0025)+abp("KRW-ETH"):        #현재가가 매수평균가의 -0.25% 손해 중이면 
                         eth = get_balance("ETH")                       
                         if eth > 0.001:                               #이더리움 잔고 조회 후 
                             upbit.sell_market_order("KRW-ETH", eth*1) #시장가로 전량 매도 후 
-                            time.sleep(900)                           #15분 거래 정지 
+                            time.sleep(2400)                           #40분 거래 정지 
         
         elif cur < j / 1.8:#하락장  (-2.5/0.3/-0.2)  
              
@@ -76,15 +76,15 @@ while True:
                 krw = get_balance("KRW")
                 if krw > 6000:                                        #잔고가 6000원 이상 확인 후 
                     upbit.buy_market_order("KRW-ETH", krw*0.9995)     #시장가로 매수 
-            elif cur > (abp("KRW-ETH")*0.003)+abp("KRW-ETH"):         #현재가가 매수평균가의 0.3% 수익 중이면 
+            elif cur >= (abp("KRW-ETH")*0.004)+abp("KRW-ETH"):        #현재가가 매수평균가의 0.4% 수익 중이면 
                         eth = get_balance("ETH")                      
                         if eth > 0.001:                               #이더리움 잔고 조회 후 
                             upbit.sell_market_order("KRW-ETH", eth*1) #시장가로 전량 매도
-            elif cur < (abp("KRW-ETH")*-0.002)+abp("KRW-ETH"):        #현재가가 매수평균가의 -0.2% 손해 중이면 
+            elif cur <= (abp("KRW-ETH")*-0.002)+abp("KRW-ETH"):       #현재가가 매수평균가의 -0.2% 손해 중이면 
                         eth = get_balance("ETH")                       
                         if eth > 0.001:                               #이더리움 잔고 조회 후 
                             upbit.sell_market_order("KRW-ETH", eth*1) #시장가로 전량 매도 후 
-                            time.sleep(900)                           #15분 거래 정지       
+                            time.sleep(2400)                          #40분 거래 정지       
         else:
             time.sleep(1)            
             
